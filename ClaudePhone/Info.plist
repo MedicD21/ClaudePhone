@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>ClaudePhone</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+	</dict>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>AccentColor</string>
+	</dict>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string>ClaudePhone needs access to your calendar to create, view, and manage events on your behalf.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>ClaudePhone needs full access to your calendar to create, view, and manage events on your behalf.</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>ClaudePhone needs access to your reminders to create and manage reminders for you.</string>
+	<key>NSRemindersFullAccessUsageDescription</key>
+	<string>ClaudePhone needs full access to your reminders to create and manage reminders for you.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>ClaudePhone needs access to your contacts to search, view, and create contacts.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>ClaudePhone needs your location to provide nearby search, directions, and location-based features.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>ClaudePhone needs to read your health data to show step counts, heart rate, workouts, and sleep analysis.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>ClaudePhone needs to write health data to log water intake and other health metrics.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>ClaudePhone needs access to your photo library to browse, search, and analyze photos.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>ClaudePhone needs to save filtered images and QR codes to your photo library.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>ClaudePhone needs Bluetooth access to scan for nearby BLE devices.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>ClaudePhone needs Bluetooth access to scan for nearby BLE devices.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>ClaudePhone uses speech recognition for voice input features.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>ClaudePhone needs microphone access for speech recognition.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>ClaudePhone needs motion data access to read accelerometer, gyroscope, and pedometer data.</string>
+	<key>NSHomeKitUsageDescription</key>
+	<string>ClaudePhone needs HomeKit access to list and control your smart home accessories.</string>
+	<key>NFCReaderUsageDescription</key>
+	<string>ClaudePhone needs NFC access to scan and read NFC tags.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>ClaudePhone uses Face ID for secure authentication.</string>
+</dict>
+</plist>
