@@ -6,42 +6,419 @@
 	objectVersion = 56;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A100000001 /* ClaudePhoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000001; };
+		A100000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000002; };
+		A100000003 /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000003; };
+		A100000004 /* ToolDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000004; };
+		A100000005 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000005; };
+		A100000006 /* ClaudeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000006; };
+		A100000007 /* ToolRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000007; };
+		A100000008 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000008; };
+		A100000009 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000009; };
+		A100000010 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000010; };
+		A100000011 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000011; };
+		A100000012 /* ToolsBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000012; };
+		A100000013 /* CalendarTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000013; };
+		A100000014 /* ReminderTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000014; };
+		A100000015 /* ContactsTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000015; };
+		A100000016 /* LocationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000016; };
+		A100000017 /* NotificationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000017; };
+		A100000018 /* HealthKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000018; };
+		A100000019 /* PhotosTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000019; };
+		A100000020 /* DeviceTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000020; };
+		A100000021 /* MediaTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000021; };
+		A100000022 /* MotionTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000022; };
+		A100000023 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000023; };
+		A100000024 /* NaturalLanguageTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000024; };
+		A100000025 /* SpeechTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000025; };
+		A100000026 /* BluetoothTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000026; };
+		A100000027 /* HomeKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000027; };
+		A100000028 /* VisionTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000028; };
+		A100000029 /* NFCTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000029; };
+		A100000030 /* StoreKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000030; };
+		A100000031 /* WebKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000031; };
+		A100000032 /* CloudKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000032; };
+		A100000033 /* CoreImageTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000033; };
+		A100000034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B100000034; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B100000001 /* ClaudePhoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudePhoneApp.swift; sourceTree = "<group>"; };
+		B100000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B100000003 /* ChatModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModels.swift; sourceTree = "<group>"; };
+		B100000004 /* ToolDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolDefinition.swift; sourceTree = "<group>"; };
+		B100000005 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		B100000006 /* ClaudeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeAPIService.swift; sourceTree = "<group>"; };
+		B100000007 /* ToolRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolRegistry.swift; sourceTree = "<group>"; };
+		B100000008 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		B100000009 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		B100000010 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		B100000011 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B100000012 /* ToolsBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsBrowserView.swift; sourceTree = "<group>"; };
+		B100000013 /* CalendarTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTools.swift; sourceTree = "<group>"; };
+		B100000014 /* ReminderTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTools.swift; sourceTree = "<group>"; };
+		B100000015 /* ContactsTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTools.swift; sourceTree = "<group>"; };
+		B100000016 /* LocationTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTools.swift; sourceTree = "<group>"; };
+		B100000017 /* NotificationTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTools.swift; sourceTree = "<group>"; };
+		B100000018 /* HealthKitTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitTools.swift; sourceTree = "<group>"; };
+		B100000019 /* PhotosTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTools.swift; sourceTree = "<group>"; };
+		B100000020 /* DeviceTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTools.swift; sourceTree = "<group>"; };
+		B100000021 /* MediaTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTools.swift; sourceTree = "<group>"; };
+		B100000022 /* MotionTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionTools.swift; sourceTree = "<group>"; };
+		B100000023 /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
+		B100000024 /* NaturalLanguageTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalLanguageTools.swift; sourceTree = "<group>"; };
+		B100000025 /* SpeechTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTools.swift; sourceTree = "<group>"; };
+		B100000026 /* BluetoothTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothTools.swift; sourceTree = "<group>"; };
+		B100000027 /* HomeKitTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeKitTools.swift; sourceTree = "<group>"; };
+		B100000028 /* VisionTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTools.swift; sourceTree = "<group>"; };
+		B100000029 /* NFCTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCTools.swift; sourceTree = "<group>"; };
+		B100000030 /* StoreKitTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitTools.swift; sourceTree = "<group>"; };
+		B100000031 /* WebKitTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebKitTools.swift; sourceTree = "<group>"; };
+		B100000032 /* CloudKitTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitTools.swift; sourceTree = "<group>"; };
+		B100000033 /* CoreImageTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImageTools.swift; sourceTree = "<group>"; };
+		B100000034 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B100000035 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C100000001 /* ClaudePhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClaudePhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
-		00000000000000000000001 /* ClaudePhone */ = {
+		G100000001 /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				G100000002 /* ClaudePhone */,
+				G100000099 /* Products */,
 			);
-			path = ClaudePhone;
 			sourceTree = "<group>";
 		};
-		00000000000000000000002 /* Products */ = {
+		G100000099 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				C100000001 /* ClaudePhone.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		00000000000000000000003 /* Root */ = {
+		G100000002 /* ClaudePhone */ = {
 			isa = PBXGroup;
 			children = (
-				00000000000000000000001 /* ClaudePhone */,
-				00000000000000000000002 /* Products */,
+				G100000003 /* App */,
+				G100000004 /* Models */,
+				G100000005 /* Services */,
+				G100000006 /* Theme */,
+				G100000007 /* Utilities */,
+				G100000008 /* Views */,
+				G100000009 /* Tools */,
+				B100000034 /* Assets.xcassets */,
+				B100000035 /* Info.plist */,
 			);
+			path = ClaudePhone;
+			sourceTree = "<group>";
+		};
+		G100000003 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B100000001 /* ClaudePhoneApp.swift */,
+				B100000002 /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		G100000004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B100000003 /* ChatModels.swift */,
+				B100000004 /* ToolDefinition.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		G100000005 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B100000005 /* ChatViewModel.swift */,
+				B100000006 /* ClaudeAPIService.swift */,
+				B100000007 /* ToolRegistry.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		G100000006 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				B100000008 /* AppTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		G100000007 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B100000009 /* KeychainManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		G100000008 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				G100000010 /* Chat */,
+				G100000011 /* Settings */,
+				B100000012 /* ToolsBrowserView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		G100000010 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				B100000010 /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		G100000011 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B100000011 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		G100000009 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				G100000020 /* EventKit */,
+				G100000021 /* Contacts */,
+				G100000022 /* Location */,
+				G100000023 /* Notifications */,
+				G100000024 /* HealthKit */,
+				G100000025 /* Photos */,
+				G100000026 /* UIKitTools */,
+				G100000027 /* Media */,
+				G100000028 /* Motion */,
+				G100000029 /* Network */,
+				G100000030 /* NaturalLanguage */,
+				G100000031 /* Speech */,
+				G100000032 /* Bluetooth */,
+				G100000033 /* HomeKit */,
+				G100000034 /* Vision */,
+				G100000035 /* NFC */,
+				G100000036 /* StoreKit */,
+				G100000037 /* WebKit */,
+				G100000038 /* CloudKit */,
+				G100000039 /* CoreImage */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		G100000020 /* EventKit */ = {
+			isa = PBXGroup;
+			children = (
+				B100000013 /* CalendarTools.swift */,
+				B100000014 /* ReminderTools.swift */,
+			);
+			path = EventKit;
+			sourceTree = "<group>";
+		};
+		G100000021 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				B100000015 /* ContactsTools.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		G100000022 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				B100000016 /* LocationTools.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		G100000023 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				B100000017 /* NotificationTools.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		G100000024 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				B100000018 /* HealthKitTools.swift */,
+			);
+			path = HealthKit;
+			sourceTree = "<group>";
+		};
+		G100000025 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				B100000019 /* PhotosTools.swift */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		G100000026 /* UIKitTools */ = {
+			isa = PBXGroup;
+			children = (
+				B100000020 /* DeviceTools.swift */,
+			);
+			path = UIKitTools;
+			sourceTree = "<group>";
+		};
+		G100000027 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				B100000021 /* MediaTools.swift */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		G100000028 /* Motion */ = {
+			isa = PBXGroup;
+			children = (
+				B100000022 /* MotionTools.swift */,
+			);
+			path = Motion;
+			sourceTree = "<group>";
+		};
+		G100000029 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B100000023 /* NetworkTools.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		G100000030 /* NaturalLanguage */ = {
+			isa = PBXGroup;
+			children = (
+				B100000024 /* NaturalLanguageTools.swift */,
+			);
+			path = NaturalLanguage;
+			sourceTree = "<group>";
+		};
+		G100000031 /* Speech */ = {
+			isa = PBXGroup;
+			children = (
+				B100000025 /* SpeechTools.swift */,
+			);
+			path = Speech;
+			sourceTree = "<group>";
+		};
+		G100000032 /* Bluetooth */ = {
+			isa = PBXGroup;
+			children = (
+				B100000026 /* BluetoothTools.swift */,
+			);
+			path = Bluetooth;
+			sourceTree = "<group>";
+		};
+		G100000033 /* HomeKit */ = {
+			isa = PBXGroup;
+			children = (
+				B100000027 /* HomeKitTools.swift */,
+			);
+			path = HomeKit;
+			sourceTree = "<group>";
+		};
+		G100000034 /* Vision */ = {
+			isa = PBXGroup;
+			children = (
+				B100000028 /* VisionTools.swift */,
+			);
+			path = Vision;
+			sourceTree = "<group>";
+		};
+		G100000035 /* NFC */ = {
+			isa = PBXGroup;
+			children = (
+				B100000029 /* NFCTools.swift */,
+			);
+			path = NFC;
+			sourceTree = "<group>";
+		};
+		G100000036 /* StoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				B100000030 /* StoreKitTools.swift */,
+			);
+			path = StoreKit;
+			sourceTree = "<group>";
+		};
+		G100000037 /* WebKit */ = {
+			isa = PBXGroup;
+			children = (
+				B100000031 /* WebKitTools.swift */,
+			);
+			path = WebKit;
+			sourceTree = "<group>";
+		};
+		G100000038 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				B100000032 /* CloudKitTools.swift */,
+			);
+			path = CloudKit;
+			sourceTree = "<group>";
+		};
+		G100000039 /* CoreImage */ = {
+			isa = PBXGroup;
+			children = (
+				B100000033 /* CoreImageTools.swift */,
+			);
+			path = CoreImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXNativeTarget section */
+		T100000001 /* ClaudePhone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = X100000002 /* Build configuration list for PBXNativeTarget "ClaudePhone" */;
+			buildPhases = (
+				S100000001 /* Sources */,
+				R100000001 /* Resources */,
+				D100000001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ClaudePhone;
+			productName = ClaudePhone;
+			productReference = C100000001 /* ClaudePhone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
 /* Begin PBXProject section */
-		00000000000000000000010 /* Project object */ = {
+		P100000001 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					T100000001 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 				};
 			};
-			buildConfigurationList = 00000000000000000000020 /* Build configuration list for PBXProject "ClaudePhone" */;
+			buildConfigurationList = X100000001 /* Build configuration list for PBXProject "ClaudePhone" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -49,78 +426,230 @@
 				en,
 				Base,
 			);
-			mainGroup = 00000000000000000000003 /* Root */;
-			productRefGroup = 00000000000000000000002 /* Products */;
+			mainGroup = G100000001 /* Root */;
+			productRefGroup = G100000099 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				T100000001 /* ClaudePhone */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		R100000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100000034 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		S100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A100000001 /* ClaudePhoneApp.swift in Sources */,
+				A100000002 /* ContentView.swift in Sources */,
+				A100000003 /* ChatModels.swift in Sources */,
+				A100000004 /* ToolDefinition.swift in Sources */,
+				A100000005 /* ChatViewModel.swift in Sources */,
+				A100000006 /* ClaudeAPIService.swift in Sources */,
+				A100000007 /* ToolRegistry.swift in Sources */,
+				A100000008 /* AppTheme.swift in Sources */,
+				A100000009 /* KeychainManager.swift in Sources */,
+				A100000010 /* ChatView.swift in Sources */,
+				A100000011 /* SettingsView.swift in Sources */,
+				A100000012 /* ToolsBrowserView.swift in Sources */,
+				A100000013 /* CalendarTools.swift in Sources */,
+				A100000014 /* ReminderTools.swift in Sources */,
+				A100000015 /* ContactsTools.swift in Sources */,
+				A100000016 /* LocationTools.swift in Sources */,
+				A100000017 /* NotificationTools.swift in Sources */,
+				A100000018 /* HealthKitTools.swift in Sources */,
+				A100000019 /* PhotosTools.swift in Sources */,
+				A100000020 /* DeviceTools.swift in Sources */,
+				A100000021 /* MediaTools.swift in Sources */,
+				A100000022 /* MotionTools.swift in Sources */,
+				A100000023 /* NetworkTools.swift in Sources */,
+				A100000024 /* NaturalLanguageTools.swift in Sources */,
+				A100000025 /* SpeechTools.swift in Sources */,
+				A100000026 /* BluetoothTools.swift in Sources */,
+				A100000027 /* HomeKitTools.swift in Sources */,
+				A100000028 /* VisionTools.swift in Sources */,
+				A100000029 /* NFCTools.swift in Sources */,
+				A100000030 /* StoreKitTools.swift in Sources */,
+				A100000031 /* WebKitTools.swift in Sources */,
+				A100000032 /* CloudKitTools.swift in Sources */,
+				A100000033 /* CoreImageTools.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
 /* Begin XCBuildConfiguration section */
-		00000000000000000000021 /* Debug */ = {
+		X100000011 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		X100000012 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		X100000021 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ClaudePhone/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ClaudePhone;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.claudephone.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.9;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		00000000000000000000022 /* Release */ = {
+		X100000022 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ClaudePhone/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = ClaudePhone;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.claudephone.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.9;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -128,11 +657,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00000000000000000000020 /* Build configuration list for PBXProject "ClaudePhone" */ = {
+		X100000001 /* Build configuration list for PBXProject "ClaudePhone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				00000000000000000000021 /* Debug */,
-				00000000000000000000022 /* Release */,
+				X100000011 /* Debug */,
+				X100000012 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		X100000002 /* Build configuration list for PBXNativeTarget "ClaudePhone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				X100000021 /* Debug */,
+				X100000022 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -140,5 +678,5 @@
 /* End XCConfigurationList section */
 
 	};
-	rootObject = 00000000000000000000010 /* Project object */;
+	rootObject = P100000001 /* Project object */;
 }
