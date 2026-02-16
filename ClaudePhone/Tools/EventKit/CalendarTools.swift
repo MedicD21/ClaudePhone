@@ -38,25 +38,27 @@ struct CreateCalendarEventTool: ClaudeTool {
             throw ToolError.invalidArguments("title, start_date, and end_date are required")
         }
 
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-
+        // FIXED: Try formatters in order of most common to least common
         let altFormatter = ISO8601DateFormatter()
         altFormatter.formatOptions = [.withInternetDateTime]
+
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
 
-        guard let startDate = formatter.date(from: startStr)
-                ?? altFormatter.date(from: startStr)
+        // Try without fractional seconds first (most common)
+        guard let startDate = altFormatter.date(from: startStr)
+                ?? formatter.date(from: startStr)
                 ?? dateFormatter.date(from: startStr) else {
-            throw ToolError.invalidArguments("Invalid start_date format. Use ISO 8601.")
+            throw ToolError.invalidArguments("Invalid start_date format. Use ISO 8601 format (e.g., 2025-01-15T14:00:00).")
         }
 
-        guard let endDate = formatter.date(from: endStr)
-                ?? altFormatter.date(from: endStr)
+        guard let endDate = altFormatter.date(from: endStr)
+                ?? formatter.date(from: endStr)
                 ?? dateFormatter.date(from: endStr) else {
-            throw ToolError.invalidArguments("Invalid end_date format. Use ISO 8601.")
+            throw ToolError.invalidArguments("Invalid end_date format. Use ISO 8601 format (e.g., 2025-01-15T15:00:00).")
         }
 
         let event = EKEvent(eventStore: eventStore)

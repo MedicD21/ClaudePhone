@@ -3,11 +3,14 @@ import SwiftUI
 // MARK: - Settings View
 struct SettingsView: View {
     @EnvironmentObject var appState: AppState
+    @EnvironmentObject var chatViewModel: ChatViewModel
     @State private var apiKeyText = ""
     @State private var hasAPIKey = false
     @State private var showingDeleteAlert = false
     @State private var showSaved = false
     @State private var showDeleteConfirm = false
+    @State private var saveError: String?
+    @State private var storageSize: String = "Calculating..."
 
     var body: some View {
         NavigationStack {
@@ -41,6 +44,7 @@ struct SettingsView: View {
             .toolbarBackground(AppTheme.backgroundPrimary, for: .navigationBar)
             .onAppear {
                 hasAPIKey = KeychainManager.shared.hasAPIKey
+                updateStorageSize()
             }
         }
     }
@@ -155,6 +159,13 @@ struct SettingsView: View {
                     .foregroundColor(AppTheme.success)
                     .transition(.move(edge: .top).combined(with: .opacity))
             }
+
+            if let error = saveError {
+                Label(error, systemImage: "exclamationmark.triangle.fill")
+                    .font(.system(size: 12))
+                    .foregroundColor(AppTheme.error)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+            }
         }
         .alert("Remove API Key?", isPresented: $showDeleteConfirm) {
             Button("Cancel", role: .cancel) {}
@@ -250,15 +261,51 @@ struct SettingsView: View {
     // MARK: - Danger Zone
     private var dangerZone: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Label("Data", systemImage: "exclamationmark.triangle")
+            Label("Data Management", systemImage: "externaldrive")
                 .font(.system(size: 16, weight: .semibold))
-                .foregroundColor(AppTheme.error)
+                .foregroundColor(AppTheme.textPrimary)
+
+            VStack(spacing: 0) {
+                HStack {
+                    Text("Storage Used")
+                        .font(.system(size: 14))
+                        .foregroundColor(AppTheme.textSecondary)
+                    Spacer()
+                    Text(storageSize)
+                        .font(.system(size: 13, design: .monospaced))
+                        .foregroundColor(AppTheme.textTertiary)
+                }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 10)
+                .background(AppTheme.backgroundSecondary)
+
+                Divider().background(AppTheme.glassBorder)
+
+                HStack {
+                    Text("Conversations")
+                        .font(.system(size: 14))
+                        .foregroundColor(AppTheme.textSecondary)
+                    Spacer()
+                    Text("\(chatViewModel.conversations.count)")
+                        .font(.system(size: 13, design: .monospaced))
+                        .foregroundColor(AppTheme.textTertiary)
+                }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 10)
+                .background(AppTheme.backgroundSecondary)
+            }
+            .background(AppTheme.backgroundSecondary)
+            .clipShape(RoundedRectangle(cornerRadius: AppTheme.radiusMedium))
+            .overlay(
+                RoundedRectangle(cornerRadius: AppTheme.radiusMedium)
+                    .stroke(AppTheme.glassBorder, lineWidth: 0.5)
+            )
 
             Button {
                 showingDeleteAlert = true
             } label: {
                 HStack {
-                    Image(systemName: "trash")
+                    Image(systemName: "trash.fill")
                     Text("Clear All Conversations")
                 }
                 .font(.system(size: 14, weight: .medium))
@@ -277,9 +324,14 @@ struct SettingsView: View {
         }
         .alert("Clear All Conversations?", isPresented: $showingDeleteAlert) {
             Button("Cancel", role: .cancel) {}
-            Button("Clear", role: .destructive) {
-                // Clear conversations would go here
+            Button("Clear All", role: .destructive) {
+                chatViewModel.clearAllConversations()
+                updateStorageSize()
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.success)
             }
+        } message: {
+            Text("This will permanently delete all \(chatViewModel.conversations.count) conversation(s). This action cannot be undone.")
         }
     }
 
@@ -299,27 +351,50 @@ struct SettingsView: View {
     }
 
     private func saveAPIKey() {
+        saveError = nil
+
         do {
             try KeychainManager.shared.saveAPIKey(apiKeyText.trimmingCharacters(in: .whitespacesAndNewlines))
             apiKeyText = ""
             hasAPIKey = true
+            appState.isOnboarding = false
             withAnimation(AppTheme.springAnimation) {
                 showSaved = true
             }
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.success)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation { showSaved = false }
             }
         } catch {
-            // Error handling
+            // FIXED: Proper error handling with user feedback
+            saveError = error.localizedDescription
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.error)
+            withAnimation(AppTheme.springAnimation) {
+                showSaved = false
+            }
         }
     }
 
     private func deleteAPIKey() {
         try? KeychainManager.shared.deleteAPIKey()
         hasAPIKey = false
+        appState.isOnboarding = true
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.warning)
+    }
+
+    private func updateStorageSize() {
+        let bytes = ConversationPersistence.shared.getStorageSize()
+        if bytes == 0 {
+            storageSize = "0 KB"
+        } else if bytes < 1024 {
+            storageSize = "\(bytes) B"
+        } else if bytes < 1024 * 1024 {
+            storageSize = String(format: "%.1f KB", Double(bytes) / 1024)
+        } else {
+            storageSize = String(format: "%.2f MB", Double(bytes) / (1024 * 1024))
+        }
     }
 }

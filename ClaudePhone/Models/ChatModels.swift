@@ -131,8 +131,31 @@ struct AnyCodable: Codable, Equatable {
         }
     }
 
+    // FIXED: Proper type-aware equality instead of string comparison
     static func == (lhs: AnyCodable, rhs: AnyCodable) -> Bool {
-        String(describing: lhs.value) == String(describing: rhs.value)
+        switch (lhs.value, rhs.value) {
+        case (is NSNull, is NSNull):
+            return true
+        case (let lBool as Bool, let rBool as Bool):
+            return lBool == rBool
+        case (let lInt as Int, let rInt as Int):
+            return lInt == rInt
+        case (let lDouble as Double, let rDouble as Double):
+            return lDouble == rDouble
+        case (let lString as String, let rString as String):
+            return lString == rString
+        case (let lArray as [Any], let rArray as [Any]):
+            guard lArray.count == rArray.count else { return false }
+            return zip(lArray, rArray).allSatisfy { AnyCodable($0) == AnyCodable($1) }
+        case (let lDict as [String: Any], let rDict as [String: Any]):
+            guard lDict.keys.sorted() == rDict.keys.sorted() else { return false }
+            return lDict.allSatisfy { key, lValue in
+                guard let rValue = rDict[key] else { return false }
+                return AnyCodable(lValue) == AnyCodable(rValue)
+            }
+        default:
+            return false
+        }
     }
 
     var stringValue: String? { value as? String }

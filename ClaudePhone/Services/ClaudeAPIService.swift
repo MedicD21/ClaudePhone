@@ -1,4 +1,5 @@
 import Foundation
+import OSLog
 
 // MARK: - Claude API Service with Streaming & Tool Calling
 actor ClaudeAPIService {
@@ -8,9 +9,17 @@ actor ClaudeAPIService {
     private let model = "claude-sonnet-4-20250514"
     private let maxTokens = 4096
     private let apiVersion = "2023-06-01"
+    private let requestTimeout: TimeInterval = 60.0
+    private let logger = Logger(subsystem: "com.claudephone.app", category: "api")
 
     private var apiKey: String? {
         KeychainManager.shared.getAPIKey()
+    }
+
+    // MARK: - Network Monitoring
+    private func isNetworkAvailable() -> Bool {
+        // Basic check - in production, use NWPathMonitor
+        return true // TODO: Implement proper network monitoring
     }
 
     // MARK: - System Prompt
@@ -41,8 +50,21 @@ actor ClaudeAPIService {
 
     // MARK: - Send Message (Streaming)
     func sendMessage(messages: [ChatMessage], tools: [ClaudeTool]) async throws -> AsyncThrowingStream<StreamEvent, Error> {
+        logger.info("📡 Sending streaming request to Claude API")
+
         guard let apiKey = apiKey else {
+            logger.error("❌ No API key found")
             throw APIError.noAPIKey
+        }
+
+        guard isNetworkAvailable() else {
+            logger.error("❌ Network unavailable")
+            throw APIError.networkUnavailable
+        }
+
+        guard let url = URL(string: baseURL) else {
+            logger.error("❌ Invalid base URL")
+            throw APIError.invalidURL
         }
 
         let apiMessages = buildAPIMessages(from: messages)
@@ -57,8 +79,10 @@ actor ClaudeAPIService {
             stream: true
         )
 
-        var urlRequest = URLRequest(url: URL(string: baseURL)!)
+        var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
+        urlRequest.timeoutInterval = requestTimeout
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.setValue(apiKey, forHTTPHeaderField: "x-api-key")
         urlRequest.setValue(apiVersion, forHTTPHeaderField: "anthropic-version")
@@ -66,6 +90,7 @@ actor ClaudeAPIService {
         let encoder = JSONEncoder()
         urlRequest.httpBody = try encoder.encode(request)
 
+        logger.debug("🔄 Initiating network request")
         let (bytes, response) = try await URLSession.shared.bytes(for: urlRequest)
 
         guard let httpResponse = response as? HTTPURLResponse else {
@@ -105,8 +130,21 @@ actor ClaudeAPIService {
 
     // MARK: - Send Message (Non-Streaming)
     func sendMessageSync(messages: [ChatMessage], tools: [ClaudeTool]) async throws -> (String, [ToolCall]?, String?) {
+        logger.info("📡 Sending non-streaming request to Claude API")
+
         guard let apiKey = apiKey else {
+            logger.error("❌ No API key found")
             throw APIError.noAPIKey
+        }
+
+        guard isNetworkAvailable() else {
+            logger.error("❌ Network unavailable")
+            throw APIError.networkUnavailable
+        }
+
+        guard let url = URL(string: baseURL) else {
+            logger.error("❌ Invalid base URL")
+            throw APIError.invalidURL
         }
 
         let apiMessages = buildAPIMessages(from: messages)
@@ -121,8 +159,10 @@ actor ClaudeAPIService {
             stream: false
         )
 
-        var urlRequest = URLRequest(url: URL(string: baseURL)!)
+        var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
+        urlRequest.timeoutInterval = requestTimeout
+        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.setValue(apiKey, forHTTPHeaderField: "x-api-key")
         urlRequest.setValue(apiVersion, forHTTPHeaderField: "anthropic-version")
@@ -130,6 +170,7 @@ actor ClaudeAPIService {
         let encoder = JSONEncoder()
         urlRequest.httpBody = try encoder.encode(request)
 
+        logger.debug("🔄 Initiating network request")
         let (data, response) = try await URLSession.shared.data(for: urlRequest)
 
         guard let httpResponse = response as? HTTPURLResponse else {
@@ -308,9 +349,12 @@ actor ClaudeAPIService {
 enum APIError: LocalizedError {
     case noAPIKey
     case invalidResponse
+    case invalidURL
+    case networkUnavailable
     case httpError(statusCode: Int, body: String)
     case parseError
     case networkError(Error)
+    case timeout
 
     var errorDescription: String? {
         switch self {
@@ -318,12 +362,18 @@ enum APIError: LocalizedError {
             return "No API key configured. Please add your Anthropic API key in Settings."
         case .invalidResponse:
             return "Invalid response from server."
+        case .invalidURL:
+            return "Invalid API endpoint URL."
+        case .networkUnavailable:
+            return "No network connection. Please check your internet connection and try again."
         case .httpError(let code, let body):
             return "HTTP \(code): \(body)"
         case .parseError:
             return "Failed to parse API response."
         case .networkError(let error):
             return "Network error: \(error.localizedDescription)"
+        case .timeout:
+            return "Request timed out. Please try again."
         }
     }
 }

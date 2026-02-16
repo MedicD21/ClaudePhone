@@ -425,19 +425,31 @@ struct ErrorBannerView: View {
 struct ConversationListView: View {
     @EnvironmentObject var chatViewModel: ChatViewModel
     @Environment(\.dismiss) var dismiss
+    @State private var conversationToDelete: Conversation?
+    @State private var showDeleteConfirm = false
 
     var body: some View {
         NavigationStack {
             ZStack {
                 AppTheme.backgroundPrimary.ignoresSafeArea()
 
-                ScrollView {
-                    LazyVStack(spacing: 4) {
-                        ForEach(chatViewModel.conversations) { conversation in
-                            Button {
-                                chatViewModel.selectConversation(conversation)
-                                dismiss()
-                            } label: {
+                if chatViewModel.conversations.isEmpty {
+                    VStack(spacing: 16) {
+                        Image(systemName: "tray")
+                            .font(.system(size: 48))
+                            .foregroundColor(AppTheme.textTertiary)
+                        Text("No conversations yet")
+                            .font(.system(size: 16, weight: .medium))
+                            .foregroundColor(AppTheme.textSecondary)
+                    }
+                } else {
+                    ScrollView {
+                        LazyVStack(spacing: 4) {
+                            ForEach(chatViewModel.conversations) { conversation in
+                                Button {
+                                    chatViewModel.selectConversation(conversation)
+                                    dismiss()
+                                } label: {
                                 HStack(spacing: 12) {
                                     Image(systemName: "bubble.left.fill")
                                         .font(.system(size: 14))
@@ -476,7 +488,8 @@ struct ConversationListView: View {
                             }
                             .contextMenu {
                                 Button(role: .destructive) {
-                                    chatViewModel.deleteConversation(conversation)
+                                    conversationToDelete = conversation
+                                    showDeleteConfirm = true
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
@@ -487,6 +500,7 @@ struct ConversationListView: View {
                     .padding(.top, 8)
                 }
             }
+            }
             .navigationTitle("Conversations")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -494,6 +508,16 @@ struct ConversationListView: View {
                     Button("Done") { dismiss() }
                         .foregroundColor(AppTheme.primary)
                 }
+            }
+            .confirmationDialog("Delete Conversation?", isPresented: $showDeleteConfirm, presenting: conversationToDelete) { conversation in
+                Button("Delete", role: .destructive) {
+                    chatViewModel.deleteConversation(conversation)
+                    let generator = UINotificationFeedbackGenerator()
+                    generator.notificationOccurred(.success)
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: { conversation in
+                Text("Are you sure you want to delete '\(conversation.title)'? This action cannot be undone.")
             }
         }
     }
