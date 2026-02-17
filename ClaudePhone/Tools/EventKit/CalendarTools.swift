@@ -251,17 +251,18 @@ struct DeleteCalendarEventTool: ClaudeTool {
 
 // MARK: - Date Parsing Helper
 private func parseDate(_ string: String) -> Date? {
-    let formatters: [DateFormatter] = {
-        let f1 = ISO8601DateFormatter()
-        let f2 = DateFormatter()
-        f2.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        let f3 = DateFormatter()
-        f3.dateFormat = "yyyy-MM-dd"
-        return [f2, f3]
-    }()
-
+    // Try ISO8601 first
     let iso = ISO8601DateFormatter()
     if let d = iso.date(from: string) { return d }
+
+    // Try other common formats
+    let formatters: [DateFormatter] = {
+        let f1 = DateFormatter()
+        f1.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let f2 = DateFormatter()
+        f2.dateFormat = "yyyy-MM-dd"
+        return [f1, f2]
+    }()
 
     for formatter in formatters {
         if let d = formatter.date(from: string) { return d }

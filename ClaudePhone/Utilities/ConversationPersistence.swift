@@ -98,9 +98,9 @@ final class ConversationPersistence {
         case .json:
             return try encoder.encode(conversation)
         case .markdown:
-            return try exportAsMarkdown(conversation).data(using: .utf8) ?? Data()
+            return exportAsMarkdown(conversation).data(using: .utf8) ?? Data()
         case .text:
-            return try exportAsText(conversation).data(using: .utf8) ?? Data()
+            return exportAsText(conversation).data(using: .utf8) ?? Data()
         }
     }
 

@@ -16,11 +16,9 @@ struct ListHomeAccessoriesTool: ClaudeTool {
         // Give HomeKit time to discover homes
         try await Task.sleep(nanoseconds: 1_000_000_000)
 
-        guard let home = homeManager.primaryHome else {
-            if homeManager.homes.isEmpty {
-                return "No HomeKit homes configured. Set up a home in the Home app first."
-            }
-            return "No primary home set. Available homes: \(homeManager.homes.map(\.name).joined(separator: ", "))"
+        // FIXED: Use homes.first instead of deprecated primaryHome
+        guard let home = homeManager.homes.first else {
+            return "No HomeKit homes configured. Set up a home in the Home app first."
         }
 
         if home.accessories.isEmpty {
@@ -78,7 +76,8 @@ struct ControlAccessoryTool: ClaudeTool {
 
         try await Task.sleep(nanoseconds: 1_000_000_000)
 
-        guard let home = homeManager.primaryHome ?? homeManager.homes.first else {
+        // FIXED: Use homes.first instead of deprecated primaryHome
+        guard let home = homeManager.homes.first else {
             throw ToolError.executionFailed("No HomeKit home configured")
         }
 

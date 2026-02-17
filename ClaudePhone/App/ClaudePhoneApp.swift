@@ -18,10 +18,17 @@ struct ClaudePhoneApp: App {
 // MARK: - App State
 class AppState: ObservableObject {
     @Published var isOnboarding: Bool
+    @Published var needsPermissions: Bool
     @Published var selectedTab: AppTab = .chat
 
     init() {
         self.isOnboarding = !KeychainManager.shared.hasAPIKey
+        self.needsPermissions = UserDefaults.standard.bool(forKey: "hasCompletedPermissionsOnboarding") == false && KeychainManager.shared.hasAPIKey
+    }
+
+    func completePermissionsOnboarding() {
+        UserDefaults.standard.set(true, forKey: "hasCompletedPermissionsOnboarding")
+        needsPermissions = false
     }
 }
 

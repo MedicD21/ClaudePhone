@@ -17,7 +17,8 @@ struct ScanBluetoothDevicesTool: ClaudeTool {
         let duration = min(15, arguments["duration_seconds"] as? Int ?? 5)
 
         return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<String, Error>) in
-            class Scanner: NSObject, CBCentralManagerDelegate {
+            // FIXED: Add @unchecked Sendable for Swift 6 compatibility
+            class Scanner: NSObject, CBCentralManagerDelegate, @unchecked Sendable {
                 var centralManager: CBCentralManager!
                 var discoveredDevices: [(name: String?, rssi: Int, uuid: String)] = []
                 var continuation: CheckedContinuation<String, Error>?

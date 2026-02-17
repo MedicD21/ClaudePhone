@@ -1,4 +1,6 @@
 import SwiftUI
+import Speech
+import AVFoundation
 
 // MARK: - Chat View
 struct ChatView: View {
@@ -6,6 +8,7 @@ struct ChatView: View {
     @State private var messageText = ""
     @State private var showConversationList = false
     @FocusState private var isInputFocused: Bool
+    @StateObject private var speechRecognizer = SpeechRecognitionManager()
 
     var body: some View {
         NavigationStack {
@@ -46,6 +49,9 @@ struct ChatView: View {
                             .padding(.bottom, 8)
                         }
                         .scrollDismissesKeyboard(.interactively)
+                        .onTapGesture {
+                            isInputFocused = false
+                        }
                         .onChange(of: chatViewModel.currentConversation?.messages.count) { _, _ in
                             withAnimation(AppTheme.quickAnimation) {
                                 proxy.scrollTo("bottom", anchor: .bottom)
@@ -69,6 +75,7 @@ struct ChatView: View {
                         text: $messageText,
                         isLoading: chatViewModel.isLoading,
                         isFocused: $isInputFocused,
+                        isRecording: speechRecognizer.isRecording,
                         onSend: {
                             let text = messageText
                             messageText = ""
@@ -76,8 +83,18 @@ struct ChatView: View {
                         },
                         onCancel: {
                             chatViewModel.cancelStreaming()
+                        },
+                        onVoiceInput: {
+                            if speechRecognizer.isRecording {
+                                speechRecognizer.stopRecording()
+                            } else {
+                                speechRecognizer.startRecording { transcription in
+                                    messageText = transcription
+                                }
+                            }
                         }
                     )
+                    .padding(.bottom, 70) // Account for custom tab bar
                 }
             }
             .navigationTitle(chatViewModel.currentConversation?.title ?? "Chat")
@@ -213,8 +230,15 @@ struct MessageBubbleView: View {
                     .padding(.horizontal, 14)
                     .padding(.vertical, 10)
                     .background(
-                        RoundedRectangle(cornerRadius: AppTheme.radiusMedium)
-                            .fill(message.role == .user ? AppTheme.primaryGradient : AnyShapeStyle(AppTheme.backgroundSecondary))
+                        Group {
+                            if message.role == .user {
+                                RoundedRectangle(cornerRadius: AppTheme.radiusMedium)
+                                    .fill(AppTheme.primaryGradient)
+                            } else {
+                                RoundedRectangle(cornerRadius: AppTheme.radiusMedium)
+                                    .fill(AppTheme.backgroundSecondary)
+                            }
+                        }
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: AppTheme.radiusMedium)
@@ -323,8 +347,10 @@ struct ChatInputBar: View {
     @Binding var text: String
     let isLoading: Bool
     var isFocused: FocusState<Bool>.Binding
+    let isRecording: Bool
     let onSend: () -> Void
     let onCancel: () -> Void
+    let onVoiceInput: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
@@ -332,6 +358,25 @@ struct ChatInputBar: View {
                 .background(AppTheme.glassBorder)
 
             HStack(alignment: .bottom, spacing: 8) {
+                // Voice input button
+                Button {
+                    onVoiceInput()
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
+                } label: {
+                    ZStack {
+                        Circle()
+                            .fill(isRecording ? AppTheme.error : AppTheme.primary.opacity(0.15))
+                            .frame(width: 36, height: 36)
+
+                        Image(systemName: "mic.fill")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(isRecording ? .white : AppTheme.primary)
+                            .symbolEffect(.pulse, options: .repeating, value: isRecording)
+                    }
+                }
+                .animation(AppTheme.quickAnimation, value: isRecording)
+
                 // Text field
                 TextField("Message ClaudePhone...", text: $text, axis: .vertical)
                     .textFieldStyle(.plain)
@@ -345,9 +390,10 @@ struct ChatInputBar: View {
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: AppTheme.radiusLarge)
-                            .stroke(AppTheme.glassBorder, lineWidth: 0.5)
+                            .stroke(isRecording ? AppTheme.error : AppTheme.glassBorder, lineWidth: isRecording ? 1.5 : 0.5)
                     )
                     .focused(isFocused)
+                    .animation(AppTheme.quickAnimation, value: isRecording)
 
                 // Send / Cancel button
                 Button {
@@ -360,9 +406,19 @@ struct ChatInputBar: View {
                     }
                 } label: {
                     ZStack {
-                        Circle()
-                            .fill(isLoading ? AppTheme.error : (text.isEmpty ? AppTheme.textTertiary.opacity(0.3) : AppTheme.primaryGradient))
-                            .frame(width: 36, height: 36)
+                        Group {
+                            if isLoading {
+                                Circle()
+                                    .fill(AppTheme.error)
+                            } else if text.isEmpty {
+                                Circle()
+                                    .fill(AppTheme.textTertiary.opacity(0.3))
+                            } else {
+                                Circle()
+                                    .fill(AppTheme.primaryGradient)
+                            }
+                        }
+                        .frame(width: 36, height: 36)
 
                         Image(systemName: isLoading ? "stop.fill" : "arrow.up")
                             .font(.system(size: isLoading ? 12 : 16, weight: .semibold))
@@ -428,6 +484,48 @@ struct ConversationListView: View {
     @State private var conversationToDelete: Conversation?
     @State private var showDeleteConfirm = false
 
+    private func conversationRow(_ conversation: Conversation) -> some View {
+        let isSelected = conversation.id == chatViewModel.currentConversation?.id
+        let userMessageCount = conversation.messages.filter { $0.role == .user }.count
+
+        return Button {
+            chatViewModel.selectConversation(conversation)
+            dismiss()
+        } label: {
+            HStack(spacing: 12) {
+                Image(systemName: "bubble.left.fill")
+                    .font(.system(size: 14))
+                    .foregroundColor(isSelected ? AppTheme.primary : AppTheme.textTertiary)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(conversation.title)
+                        .font(.system(size: 15, weight: .medium))
+                        .foregroundColor(AppTheme.textPrimary)
+                        .lineLimit(1)
+
+                    Text(conversation.updatedAt, style: .relative)
+                        .font(.system(size: 12))
+                        .foregroundColor(AppTheme.textTertiary)
+                }
+
+                Spacer()
+
+                Text("\(userMessageCount)")
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundColor(AppTheme.textTertiary)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(Capsule().fill(AppTheme.backgroundTertiary))
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(
+                RoundedRectangle(cornerRadius: AppTheme.radiusMedium)
+                    .fill(isSelected ? AppTheme.primary.opacity(0.1) : .clear)
+            )
+        }
+    }
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -446,56 +544,17 @@ struct ConversationListView: View {
                     ScrollView {
                         LazyVStack(spacing: 4) {
                             ForEach(chatViewModel.conversations) { conversation in
-                                Button {
-                                    chatViewModel.selectConversation(conversation)
-                                    dismiss()
-                                } label: {
-                                HStack(spacing: 12) {
-                                    Image(systemName: "bubble.left.fill")
-                                        .font(.system(size: 14))
-                                        .foregroundColor(
-                                            conversation.id == chatViewModel.currentConversation?.id
-                                            ? AppTheme.primary : AppTheme.textTertiary
-                                        )
-
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text(conversation.title)
-                                            .font(.system(size: 15, weight: .medium))
-                                            .foregroundColor(AppTheme.textPrimary)
-                                            .lineLimit(1)
-
-                                        Text(conversation.updatedAt, style: .relative)
-                                            .font(.system(size: 12))
-                                            .foregroundColor(AppTheme.textTertiary)
+                                conversationRow(conversation)
+                                    .contextMenu {
+                                        Button(role: .destructive) {
+                                            conversationToDelete = conversation
+                                            showDeleteConfirm = true
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
                                     }
-
-                                    Spacer()
-
-                                    Text("\(conversation.messages.filter { $0.role == .user }.count)")
-                                        .font(.system(size: 12, weight: .medium))
-                                        .foregroundColor(AppTheme.textTertiary)
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 4)
-                                        .background(Capsule().fill(AppTheme.backgroundTertiary))
-                                }
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 12)
-                                .background(
-                                    RoundedRectangle(cornerRadius: AppTheme.radiusMedium)
-                                        .fill(conversation.id == chatViewModel.currentConversation?.id
-                                              ? AppTheme.primary.opacity(0.1) : .clear)
-                                )
-                            }
-                            .contextMenu {
-                                Button(role: .destructive) {
-                                    conversationToDelete = conversation
-                                    showDeleteConfirm = true
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
                             }
                         }
-                    }
                     .padding(.horizontal, 8)
                     .padding(.top, 8)
                 }
@@ -518,6 +577,108 @@ struct ConversationListView: View {
                 Button("Cancel", role: .cancel) {}
             } message: { conversation in
                 Text("Are you sure you want to delete '\(conversation.title)'? This action cannot be undone.")
+            }
+        }
+    }
+}
+
+// MARK: - Speech Recognition Manager
+class SpeechRecognitionManager: ObservableObject {
+    @Published var isRecording = false
+    @Published var transcription = ""
+
+    private var audioEngine: AVAudioEngine?
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
+    private var onTranscriptionComplete: ((String) -> Void)?
+
+    func startRecording(completion: @escaping (String) -> Void) {
+        // Request permissions
+        SFSpeechRecognizer.requestAuthorization { [weak self] authStatus in
+            guard authStatus == .authorized else { return }
+
+            DispatchQueue.main.async {
+                self?.onTranscriptionComplete = completion
+                self?.beginRecording()
+            }
+        }
+    }
+
+    private func beginRecording() {
+        // Cancel any existing task
+        recognitionTask?.cancel()
+        recognitionTask = nil
+
+        // Configure audio session
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        } catch {
+            print("Failed to set up audio session: \(error)")
+            return
+        }
+
+        // Create recognition request
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        guard let recognitionRequest = recognitionRequest else { return }
+        recognitionRequest.shouldReportPartialResults = true
+
+        // Create audio engine
+        audioEngine = AVAudioEngine()
+        guard let audioEngine = audioEngine else { return }
+
+        let inputNode = audioEngine.inputNode
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
+            recognitionRequest.append(buffer)
+        }
+
+        audioEngine.prepare()
+        do {
+            try audioEngine.start()
+        } catch {
+            print("Audio engine failed to start: \(error)")
+            return
+        }
+
+        isRecording = true
+        transcription = ""
+
+        // Start recognition
+        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest) { [weak self] result, error in
+            guard let self = self else { return }
+
+            if let result = result {
+                let transcribedText = result.bestTranscription.formattedString
+                DispatchQueue.main.async {
+                    self.transcription = transcribedText
+                }
+            }
+
+            if error != nil || result?.isFinal == true {
+                self.stopRecording()
+            }
+        }
+    }
+
+    func stopRecording() {
+        audioEngine?.stop()
+        audioEngine?.inputNode.removeTap(onBus: 0)
+        recognitionRequest?.endAudio()
+        recognitionTask?.cancel()
+
+        recognitionRequest = nil
+        recognitionTask = nil
+        audioEngine = nil
+
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.isRecording = false
+            if !self.transcription.isEmpty {
+                self.onTranscriptionComplete?(self.transcription)
             }
         }
     }

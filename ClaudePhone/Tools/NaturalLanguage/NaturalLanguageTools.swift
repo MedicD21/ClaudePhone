@@ -163,7 +163,6 @@ struct ExtractEntitesTool: ClaudeTool {
         tagger.string = text
 
         let options: NLTagger.Options = [.omitPunctuation, .omitWhitespace]
-        let tags: [NLTag] = [.personalName, .placeName, .organizationName]
 
         var entities: [String: [String]] = [
             "People": [],

@@ -62,7 +62,8 @@ struct ApplyFilterTool: ClaudeTool {
             throw ToolError.executionFailed("Photo not found with ID: \(photoId)")
         }
 
-        let image = await withCheckedContinuation { (continuation: CheckedContinuation<UIImage?, Void>) in
+        // FIXED: Use proper continuation type (Never, not Void)
+        let image = await withCheckedContinuation { (continuation: CheckedContinuation<UIImage?, Never>) in
             let options = PHImageRequestOptions()
             options.deliveryMode = .highQualityFormat
             options.isSynchronous = false

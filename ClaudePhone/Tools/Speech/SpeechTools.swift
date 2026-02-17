@@ -33,7 +33,8 @@ struct SpeakTextTool: ClaudeTool {
         let synthesizer = AVSpeechSynthesizer()
 
         return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<String, Error>) in
-            class SpeechDelegate: NSObject, AVSpeechSynthesizerDelegate {
+            // FIXED: Add @unchecked Sendable for Swift 6 compatibility
+            class SpeechDelegate: NSObject, AVSpeechSynthesizerDelegate, @unchecked Sendable {
                 let continuation: CheckedContinuation<String, Error>
                 let text: String
 

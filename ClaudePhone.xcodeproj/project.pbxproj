@@ -7,40 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A100000001 /* ClaudePhoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000001; };
-		A100000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000002; };
-		A100000003 /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000003; };
-		A100000004 /* ToolDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000004; };
-		A100000005 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000005; };
-		A100000006 /* ClaudeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000006; };
-		A100000007 /* ToolRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000007; };
-		A100000008 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000008; };
-		A100000009 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000009; };
-		A100000010 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000010; };
-		A100000011 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000011; };
-		A100000012 /* ToolsBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000012; };
-		A100000013 /* CalendarTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000013; };
-		A100000014 /* ReminderTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000014; };
-		A100000015 /* ContactsTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000015; };
-		A100000016 /* LocationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000016; };
-		A100000017 /* NotificationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000017; };
-		A100000018 /* HealthKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000018; };
-		A100000019 /* PhotosTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000019; };
-		A100000020 /* DeviceTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000020; };
-		A100000021 /* MediaTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000021; };
-		A100000022 /* MotionTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000022; };
-		A100000023 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000023; };
-		A100000024 /* NaturalLanguageTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000024; };
-		A100000025 /* SpeechTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000025; };
-		A100000026 /* BluetoothTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000026; };
-		A100000027 /* HomeKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000027; };
-		A100000028 /* VisionTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000028; };
-		A100000029 /* NFCTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000029; };
-		A100000030 /* StoreKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000030; };
-		A100000031 /* WebKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000031; };
-		A100000032 /* CloudKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000032; };
-		A100000033 /* CoreImageTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000033; };
-		A100000034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B100000034; };
+		A100000001 /* ClaudePhoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000001 /* ClaudePhoneApp.swift */; };
+		A100000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000002 /* ContentView.swift */; };
+		A100000003 /* ChatModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000003 /* ChatModels.swift */; };
+		A100000004 /* ToolDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000004 /* ToolDefinition.swift */; };
+		A100000005 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000005 /* ChatViewModel.swift */; };
+		A100000006 /* ClaudeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000006 /* ClaudeAPIService.swift */; };
+		A100000007 /* ToolRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000007 /* ToolRegistry.swift */; };
+		A100000008 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000008 /* AppTheme.swift */; };
+		A100000009 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000009 /* KeychainManager.swift */; };
+		A100000010 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000010 /* ChatView.swift */; };
+		A100000011 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000011 /* SettingsView.swift */; };
+		A100000012 /* ToolsBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000012 /* ToolsBrowserView.swift */; };
+		A100000013 /* CalendarTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000013 /* CalendarTools.swift */; };
+		A100000014 /* ReminderTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000014 /* ReminderTools.swift */; };
+		A100000015 /* ContactsTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000015 /* ContactsTools.swift */; };
+		A100000016 /* LocationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000016 /* LocationTools.swift */; };
+		A100000017 /* NotificationTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000017 /* NotificationTools.swift */; };
+		A100000018 /* HealthKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000018 /* HealthKitTools.swift */; };
+		A100000019 /* PhotosTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000019 /* PhotosTools.swift */; };
+		A100000020 /* DeviceTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000020 /* DeviceTools.swift */; };
+		A100000021 /* MediaTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000021 /* MediaTools.swift */; };
+		A100000022 /* MotionTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000022 /* MotionTools.swift */; };
+		A100000023 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000023 /* NetworkTools.swift */; };
+		A100000024 /* NaturalLanguageTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000024 /* NaturalLanguageTools.swift */; };
+		A100000025 /* SpeechTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000025 /* SpeechTools.swift */; };
+		A100000026 /* BluetoothTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000026 /* BluetoothTools.swift */; };
+		A100000027 /* HomeKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000027 /* HomeKitTools.swift */; };
+		A100000028 /* VisionTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000028 /* VisionTools.swift */; };
+		A100000029 /* NFCTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000029 /* NFCTools.swift */; };
+		A100000030 /* StoreKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000030 /* StoreKitTools.swift */; };
+		A100000031 /* WebKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000031 /* WebKitTools.swift */; };
+		A100000032 /* CloudKitTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000032 /* CloudKitTools.swift */; };
+		A100000033 /* CoreImageTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = B100000033 /* CoreImageTools.swift */; };
+		A100000034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B100000034 /* Assets.xcassets */; };
+		CB4948B22F42C42C008DEA8A /* ConversationPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4948B12F42C42C008DEA8A /* ConversationPersistence.swift */; };
+		CB4948B42F42C43A008DEA8A /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4948B32F42C43A008DEA8A /* HapticManager.swift */; };
+		CB4948B62F42C446008DEA8A /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4948B52F42C446008DEA8A /* UserPreferences.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,7 +82,11 @@
 		B100000033 /* CoreImageTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreImageTools.swift; sourceTree = "<group>"; };
 		B100000034 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B100000035 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B100000036 /* ClaudePhone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClaudePhone.entitlements; sourceTree = "<group>"; };
 		C100000001 /* ClaudePhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClaudePhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB4948B12F42C42C008DEA8A /* ConversationPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationPersistence.swift; sourceTree = "<group>"; };
+		CB4948B32F42C43A008DEA8A /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		CB4948B52F42C446008DEA8A /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,20 +100,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		G100000001 /* Root */ = {
+		G100000001 = {
 			isa = PBXGroup;
 			children = (
 				G100000002 /* ClaudePhone */,
 				G100000099 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		G100000099 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C100000001 /* ClaudePhone.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		G100000002 /* ClaudePhone */ = {
@@ -121,6 +120,7 @@
 				G100000009 /* Tools */,
 				B100000034 /* Assets.xcassets */,
 				B100000035 /* Info.plist */,
+				B100000036 /* ClaudePhone.entitlements */,
 			);
 			path = ClaudePhone;
 			sourceTree = "<group>";
@@ -164,6 +164,9 @@
 		G100000007 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CB4948B52F42C446008DEA8A /* UserPreferences.swift */,
+				CB4948B32F42C43A008DEA8A /* HapticManager.swift */,
+				CB4948B12F42C42C008DEA8A /* ConversationPersistence.swift */,
 				B100000009 /* KeychainManager.swift */,
 			);
 			path = Utilities;
@@ -177,22 +180,6 @@
 				B100000012 /* ToolsBrowserView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		G100000010 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				B100000010 /* ChatView.swift */,
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
-		G100000011 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				B100000011 /* SettingsView.swift */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		G100000009 /* Tools */ = {
@@ -220,6 +207,22 @@
 				G100000039 /* CoreImage */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		G100000010 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				B100000010 /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		G100000011 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B100000011 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		G100000020 /* EventKit */ = {
@@ -383,6 +386,14 @@
 			path = CoreImage;
 			sourceTree = "<group>";
 		};
+		G100000099 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C100000001 /* ClaudePhone.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -426,7 +437,7 @@
 				en,
 				Base,
 			);
-			mainGroup = G100000001 /* Root */;
+			mainGroup = G100000001;
 			productRefGroup = G100000099 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -465,9 +476,11 @@
 				A100000011 /* SettingsView.swift in Sources */,
 				A100000012 /* ToolsBrowserView.swift in Sources */,
 				A100000013 /* CalendarTools.swift in Sources */,
+				CB4948B62F42C446008DEA8A /* UserPreferences.swift in Sources */,
 				A100000014 /* ReminderTools.swift in Sources */,
 				A100000015 /* ContactsTools.swift in Sources */,
 				A100000016 /* LocationTools.swift in Sources */,
+				CB4948B42F42C43A008DEA8A /* HapticManager.swift in Sources */,
 				A100000017 /* NotificationTools.swift in Sources */,
 				A100000018 /* HealthKitTools.swift in Sources */,
 				A100000019 /* PhotosTools.swift in Sources */,
@@ -478,6 +491,7 @@
 				A100000024 /* NaturalLanguageTools.swift in Sources */,
 				A100000025 /* SpeechTools.swift in Sources */,
 				A100000026 /* BluetoothTools.swift in Sources */,
+				CB4948B22F42C42C008DEA8A /* ConversationPersistence.swift in Sources */,
 				A100000027 /* HomeKitTools.swift in Sources */,
 				A100000028 /* VisionTools.swift in Sources */,
 				A100000029 /* NFCTools.swift in Sources */,
@@ -613,9 +627,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ClaudePhone/ClaudePhone.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 286LKF859M;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ClaudePhone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -636,9 +651,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ClaudePhone/ClaudePhone.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 286LKF859M;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = ClaudePhone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -676,7 +692,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
 	};
 	rootObject = P100000001 /* Project object */;
 }
